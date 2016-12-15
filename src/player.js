@@ -2,11 +2,11 @@ console.log('player working');
 
 class Player {
   constructor() {
-    this.width = 5;
-    this.height = 5;
-    this.x = this.width / 2;
-    this.y = this.height - 5;
+    this.width = 20;
+    this.height = 20;
+    this.x = 0;
+    this.y = 300;
   }
+
 }
-let player = new Player();
-console.log(player);
+
