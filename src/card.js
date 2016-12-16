@@ -5,10 +5,23 @@ class Card {
     constructor() {
         this.card = null;
         this.cardSuit = null;
+        this.cardValue = [];
     }
     getCards(i, j) {
         this.card = cards[i];
-        this.cardSuit = cardsSuit[Math.floor(j)];
+        this.cardSuit = cardsSuit[j];
+        if(this.card === 'J'||
+          this.card === 'Q'||
+          this.card === 'K'){
+          this.cardValue.push(10);
+        }else{
+          if(this.card === 'A'){
+            this.cardValue.push(11);
+            this.cardValue.push(1);
+          }else{
+            this.cardValue.push(this.card);
+          }
+        }
     }
 }
 // let newCard = new Card();
