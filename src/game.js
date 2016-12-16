@@ -6,6 +6,7 @@ class Game {
         this.player1Value = 0;
         this.player2Value = 0;
         this.theDeck = null;
+        //used in blackjack check
         this.oneDeal = null;
     }
     newGameDeck() {
@@ -28,31 +29,29 @@ class Game {
             console.log(i);
         }
         this.oneDeal = true;
-        return this.player1, this.player2;
+        return [this.player1, this.player2];
     }
-    handValue(){
-      this.player1Value = this.player1[0].cardValue[0] + this.player1[1].cardValue[0];
-      this.player2Value = this.player2[0].cardValue[0] + this.player2[1].cardValue[0];
-      return this.player1Value, this.player2Value;
+    handValue() {
+        this.player1Value = this.player1[0].cardValue[0] + this.player1[1].cardValue[0];
+        this.player2Value = this.player2[0].cardValue[0] + this.player2[1].cardValue[0];
+        return [this.player1Value, this.player2Value];
 
     }
+
     checkWinner() {
-      if(this.player1Value === 21 && this.player2Value !==21 && this.oneDeal){
-        return 'Blackjack!', alert('Winner Winnner Chicken Dinner!!!'), console.log(this.player1Value, this.player2Value);
-      }else{
-      if (this.player1Value===this.player2Value){
-        return 'push', console.log(this.player1Value, this.player2Value);
-      }else{ if (this.player1Value>this.player2Value){
-          return 'player wins', console.log(this.player1Value, this.player2Value);
-      }else{
-        return 'dealer wins', console.log(this.player1Value, this.player2Value);
-      }
-      }
+        if (this.player1Value === 21 && this.player2Value !== 21 && this.oneDeal) {
+            return 'Blackjack!', alert('Winner Winnner Chicken Dinner!!!')
+        } else {
+            if (this.player1Value === this.player2Value) {
+                return 'push'
+            } else {
+                if (this.player1Value > this.player2Value) {
+                    return 'player wins'
+                } else {
+                    return 'dealer wins'
+                }
+            }
+        }
     }
-  }
 }
-// let theGame = new Game();
-// console.log('the game deck' + theGame.newGameDeck());
-// let newDeal = theGame.firstDeal();
-// let newValue = theGame.handValue();
-// console.log(theGame.checkWinner());
+

@@ -26,6 +26,9 @@ class Deck {
         }
         return this.deck;
     }
+    shuffledDeck(){
+
+    }
 }
 // newDeck = new Deck();
 // console.log(newDeck);

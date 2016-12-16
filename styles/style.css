@@ -18,6 +18,7 @@
     left: 0;
     right: 0;
     background-color: green;
+    border-radius: 0px 0px 400px 400px;
 }
 
 li {
@@ -28,40 +29,48 @@ li {
   margin: 3px;
 }
 
-li:first-of-type {
-  transition: all 1s;
-}
-
-li:nth-of-type(2) {
-  left: 55px;
-  transition: all 1s;
-}
-
-li:nth-of-type(3) {
-  left: 110px;
-  transition: all 1s;
-}
-
-li:nth-of-type(4) {
-  left: 165px;
-  transition: all 1s;
-}
-
-li:last-of-type {
+li:last-of-type.collapsed {
   left: 220px;
   transition: all 1s;
+transform: rotate(-360deg);
+}
+
+li:first-of-type.collapsed  {
+  transition: all 1s;
+  transform: rotate(-360deg);
+}
+
+li:nth-of-type(2).collapsed  {
+  left: 55px;
+  transition: all 1s;
+transform: rotate(-360deg);
+}
+
+li:nth-of-type(3).collapsed {
+  left: 110px;
+  transition: all 1s;
+transform: rotate(-360deg);
+}
+
+li:nth-of-type(4).collapsed {
+  left: 165px;
+  transition: all 1s;
+transform: rotate(-360deg);
 }
 
 button {
-  position: absolute;
-  height: 30px;
-  width: 50px;
+  position: relative;
+  height: 60px;
+  width: 90px;
   border: 1px solid black;
   margin: 75px;
   background-color: white;
+  margin: 0 auto;
+  top: 400px;
+  left: 100px;
 }
 
-li:first-of-type.collapsed {
+li:first-of-type{
   left: 5px;
   top: 5px;
   border: 1px solid black;
@@ -69,10 +78,9 @@ li:first-of-type.collapsed {
   padding: 7px;
   margin: 4px;
   transition: all 1s;
-  transform: rotate(-360deg);
 }
 
-li:nth-of-type(2).collapsed {
+li:nth-of-type(2){
   left: 8px;
   top: 8px;
   border: 1px solid black;
@@ -80,10 +88,9 @@ li:nth-of-type(2).collapsed {
   padding: 7px;
   margin: 4px;
   transition: all 1s;
-  transform: rotate(-540deg);
-}
+  }
 
-li:nth-of-type(3).collapsed {
+li:nth-of-type(3){
   left: 11px;
   top: 11px;
   border: 1px solid black;
@@ -91,10 +98,9 @@ li:nth-of-type(3).collapsed {
   padding: 7px;
   margin: 4px;
   transition: all 1s;
-  transform: rotate(-720deg);
-}
+  }
 
-li:nth-of-type(4).collapsed {
+li:nth-of-type(4){
   left: 14px;
   top: 14px;
   border: 1px solid black;
@@ -102,10 +108,9 @@ li:nth-of-type(4).collapsed {
   padding: 7px;
   margin: 4px;
   transition: all 1s;
-  transform: rotate(-900deg);
-}
+  }
 
-li:last-of-type.collapsed {
+li:last-of-type{
   left: 17px;
   top: 17px;
   border: 1px solid black;
@@ -113,6 +118,12 @@ li:last-of-type.collapsed {
   padding: 7px;
   margin: 4px;
   transition: all 1s;
-  transform: rotate(-1080deg);
+
+}
+#player{
+  top:100px;
+}
+#dealer{
+  top:300px;
 }
 
