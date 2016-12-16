@@ -37,7 +37,7 @@ class Game {
 
     }
     checkWinner() {
-      if(this.player1Value === 21 && this.oneDeal){
+      if(this.player1Value === 21 && this.player2Value !==21 && this.oneDeal){
         return 'Blackjack!', alert('Winner Winnner Chicken Dinner!!!'), console.log(this.player1Value, this.player2Value);
       }else{
       if (this.player1Value===this.player2Value){
@@ -51,8 +51,8 @@ class Game {
     }
   }
 }
-let theGame = new Game();
-console.log('the game deck' + theGame.newGameDeck());
-let newDeal = theGame.firstDeal();
-let newValue = theGame.handValue();
-console.log(theGame.checkWinner());
+// let theGame = new Game();
+// console.log('the game deck' + theGame.newGameDeck());
+// let newDeal = theGame.firstDeal();
+// let newValue = theGame.handValue();
+// console.log(theGame.checkWinner());

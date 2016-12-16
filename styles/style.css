@@ -1,10 +1,12 @@
-/*#gameBoard{
+#gameBoard{
   background-color: purple;
-  /*width: 90%;
+  width: 90%;
   height: 700px;
-  margin: 0 auto;*/
-/*}
-canvas {
+  margin: 0 auto;
+  position: relative;
+}
+
+#blackjack_table {
     padding: 0;
     margin: auto;
     display: block;
@@ -15,5 +17,102 @@ canvas {
     bottom: 0;
     left: 0;
     right: 0;
+    background-color: green;
 }
-*/
+
+li {
+  position: absolute;
+  border: 1px solid black;
+  background-color: white;
+  padding: 7px;
+  margin: 3px;
+}
+
+li:first-of-type {
+  transition: all 1s;
+}
+
+li:nth-of-type(2) {
+  left: 55px;
+  transition: all 1s;
+}
+
+li:nth-of-type(3) {
+  left: 110px;
+  transition: all 1s;
+}
+
+li:nth-of-type(4) {
+  left: 165px;
+  transition: all 1s;
+}
+
+li:last-of-type {
+  left: 220px;
+  transition: all 1s;
+}
+
+button {
+  position: absolute;
+  height: 30px;
+  width: 50px;
+  border: 1px solid black;
+  margin: 75px;
+  background-color: white;
+}
+
+li:first-of-type.collapsed {
+  left: 5px;
+  top: 5px;
+  border: 1px solid black;
+  background-color: white;
+  padding: 7px;
+  margin: 4px;
+  transition: all 1s;
+  transform: rotate(-360deg);
+}
+
+li:nth-of-type(2).collapsed {
+  left: 8px;
+  top: 8px;
+  border: 1px solid black;
+  background-color: white;
+  padding: 7px;
+  margin: 4px;
+  transition: all 1s;
+  transform: rotate(-540deg);
+}
+
+li:nth-of-type(3).collapsed {
+  left: 11px;
+  top: 11px;
+  border: 1px solid black;
+  background-color: white;
+  padding: 7px;
+  margin: 4px;
+  transition: all 1s;
+  transform: rotate(-720deg);
+}
+
+li:nth-of-type(4).collapsed {
+  left: 14px;
+  top: 14px;
+  border: 1px solid black;
+  background-color: white;
+  padding: 7px;
+  margin: 4px;
+  transition: all 1s;
+  transform: rotate(-900deg);
+}
+
+li:last-of-type.collapsed {
+  left: 17px;
+  top: 17px;
+  border: 1px solid black;
+  background-color: white;
+  padding: 7px;
+  margin: 4px;
+  transition: all 1s;
+  transform: rotate(-1080deg);
+}
+
