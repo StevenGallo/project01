@@ -1,24 +1,47 @@
+body{
+  background-image: url('http://wallpapercave.com/wp/gfwPusm.jpg');
+  background-repeat: no-repeat;
+  height: 700vw;
+}
+header{
+  height: 200px;
+}
+#falcon{
+  /*display: inline-block;*/
+  float: left;
+  width:23%;
+  margin-top: 20vw;
+}
+#tie{
+  float: right;
+  width: 23%;
+  margin-top: 20vw;
+}
 #gameBoard{
-  background-color: purple;
-  width: 90%;
-  height: 700px;
+  /*display: inline-block;*/
+  background-color: black;
+  padding-top: 40px;
+  width: 49%;
+  height: 60vw;
   margin: 0 auto;
   position: relative;
+  border: 20px solid gold;
+  border-radius: 40px;
 }
 
 #blackjack_table {
     padding: 0;
-    margin: auto;
+    margin:  0 auto;
     display: block;
-    width: 800px;
+    width: 400px;
     height: 600px;
     position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: green;
-    border-radius: 0px 0px 400px 400px;
+    /*background-color: gold;*/
+    /*border-radius: 0px 0px 400px 400px;*/
 }
 
 li {
@@ -29,7 +52,7 @@ li {
   margin: 3px;
 }
 
-li:last-of-type.collapsed {
+/*li:last-of-type.collapsed {
   left: 220px;
   transition: all 1s;
 transform: rotate(-360deg);
@@ -119,11 +142,15 @@ li:last-of-type{
   margin: 4px;
   transition: all 1s;
 
-}
+}*/
 #player{
-  top:100px;
+  position: relative;
+  top:200px;
+  left: 200px;
 }
 #dealer{
-  top:300px;
+  position: relative;
+  left: 200px;
+  top:100px;
 }
 
