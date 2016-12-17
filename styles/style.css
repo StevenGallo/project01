@@ -1,28 +1,28 @@
 body{
   background-image: url('http://wallpapercave.com/wp/gfwPusm.jpg');
-  background-repeat: no-repeat;
-  height: 700vw;
+  /*background-repeat: no-repeat;*/
+  height: 80vw;
 }
 header{
-  height: 200px;
+  height: 100px;
 }
 #falcon{
   /*display: inline-block;*/
   float: left;
   width:23%;
-  margin-top: 20vw;
+  margin-top: 18vw;
 }
 #tie{
   float: right;
   width: 23%;
-  margin-top: 20vw;
+  margin-top: 15vw;
 }
 #gameBoard{
   /*display: inline-block;*/
   background-color: black;
   padding-top: 40px;
   width: 49%;
-  height: 60vw;
+  height: 40vw;
   margin: 0 auto;
   position: relative;
   border: 20px solid gold;
