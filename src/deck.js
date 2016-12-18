@@ -1,4 +1,5 @@
 console.log('deck working');
+let a = 0;
 class Deck {
     constructor() {
         this.deck = [];
@@ -10,7 +11,8 @@ class Deck {
                 console.log(j);
                 this.newCard = new Card();
                 //console.log(this.newCard);
-                this.newCard.getCards(i, j);
+                this.newCard.getCards(i, j, a);
+                a++;
                 console.log(this.newCard);
                 this.deck.push(this.newCard);
                 console.log(this.deck);
