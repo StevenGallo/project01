@@ -57,12 +57,24 @@ class Game {
       return this.player2Hand
      }
     handValue() {
-        this.player1Value = this.player1[0].cardValue + this.player1[1].cardValue;
-        this.player2Value = this.player2[0].cardValue + this.player2[1].cardValue;
+        for(let i =0; i<this.player1.length; i++){
+          this.player1Value += this.player1[i].cardValue;
+          if(this.player1Value>21){
+            this.player1Value = this.player1Value-10;
+            this.player1Ace --;
+          }
+        }
+        for(let j =0; j<this.player2.length; j++){
+          this.player2Value += this.player2[j].cardValue;
+          if(this.player2Value>21){
+            this.player2Value = this.player2Value-10;
+            this.player2Ace --;
+          }
+        }
         return [this.player1Value, this.player2Value];
 
     }
-    hit(player){
+    hit(playerNum){
 
     }
     checkWinner() {
@@ -82,4 +94,18 @@ class Game {
         }
     }
 }
-
+// handValue() {
+//         this.player1.forEach(function(each){
+//           console.log(each);
+//           let value1 = 0;
+//           value1 = value1 + each.cardValue;
+//           console.log(value1);
+//           return value1;
+//         });
+//         this.player2.forEach(function(each){
+//           let value2 = 0;
+//           value2 += each.cardValue;
+//           return value2;
+//         });
+//         this.player1Value = value1;
+//         this.player1Value = value2;

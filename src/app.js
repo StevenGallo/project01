@@ -12,6 +12,7 @@ class Play {
     }
 }
 let thisPlay = new Play();
+console.log(thisPlay);
     let theGame = thisPlay.newPlay();
     theGame.newGameDeck();
 function firstGame() {
@@ -23,11 +24,25 @@ function firstGame() {
         $('#dealer').append('<li><img src="assets/cards/' + this + '" /></li>');
     });
     $('#credits').html('Credits: ' + thisPlay.credits);
-    console.log(theGame.handValue()[1]);
-    $('#dealer_total').html('Dealer:').append('<br />'+theGame.handValue()[1]);
-    $('#player_total').html('Player:').append('<br />'+theGame.handValue()[0]);
+    let firstValue = theGame.handValue();
+    $('#dealer_total').html('Dealer:').append('<br />'+firstValue[1]);
+    $('#player_total').html('Player:').append('<br />'+firstValue[0]);
 }
 $('button#Play').click(() => firstGame());
+function addBet(num){
+  console.log(num);
+  console.log(thisPlay.bet);
+  if(num<=thisPlay.credits){
+    thisPlay.bet = thisPlay.bet + num;
+    thisPlay.credits = thisPlay.credits - num;
+    $('#bet').html('Bet: '+ thisPlay.bet);
+    $('#credits').html('Credits: ' + thisPlay.credits);
+  }
+}
+$('button#bet100').click(() => addBet(100));
+$('button#bet500').click(() => addBet(500));
+$('button#bet1000').click(() => addBet(1000));
+
 
 //
 //let newValue = theGame.handValue();
