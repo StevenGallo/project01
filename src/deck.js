@@ -1,10 +1,10 @@
 console.log('deck working');
-let a = 0;
 class Deck {
     constructor() {
         this.deck = [];
     }
     createDeck() {
+        let a = 0;
         for (let i = 0; i < cards.length; i++) {
             console.log(i);
             for (let j = 0; j < cardsSuit.length; j++) {
@@ -21,6 +21,7 @@ class Deck {
         }
         return this.deck;
     }
+    //shuffleDeck() logic I wrote with help from stack overflow
     shuffleDeck() {
         for (let i = this.deck.length; i; i--) {
             let j = Math.floor(Math.random() * i);
@@ -28,9 +29,7 @@ class Deck {
         }
         return this.deck;
     }
-    shuffledDeck(){
+    shuffledDeck() {
 
     }
 }
-// newDeck = new Deck();
-// console.log(newDeck);

@@ -1,12 +1,10 @@
 console.log('game working');
-
 //player card array counter
 let j = 0;
 //dealer card array counter
 let k = 0;
 //deck counter
 let d = 0;
-
 class Game {
     constructor() {
         this.player1 = [];
@@ -18,8 +16,9 @@ class Game {
         this.theDeck = null;
         this.player1Ace = 0;
         this.player2Ace = 0;
+        this.push = false;
         this.bust = false;
-        this.gameOver = false;
+        this.playerWin = false;
     }
     newGameDeck() {
         this.newDeck = new Deck();
@@ -31,7 +30,11 @@ class Game {
         this.theDeck.newGameDeck();
     }
     firstDeal() {
+           j = 0;
+           k = 0;
+           d = 0;
         for (d; d < 4; d++) {
+          console.log(d);
             this.player1.push(this.theDeck[d]);
             this.player1Hand.push(this.player1[j].cardImg);
             if (this.player1[j].cardValue === 11) {
@@ -48,7 +51,6 @@ class Game {
             }
             k++;
         }
-        this.oneDeal = true;
         return [this.player1, this.player2];
     }
     playerHand() {
@@ -85,6 +87,8 @@ class Game {
         }
         $('#player').append('<li><img src="assets/cards/' + this.player1[j].cardImg + '" /></li>');
         this.player1Value = this.player1Value + this.player1[this.player1.length - 1].cardValue;
+        j++;
+                d++;
         console.log(this.player1Value);
         if (this.player1Value <= 21) {
             return this.player1Value
@@ -98,12 +102,10 @@ class Game {
                 return this.player1Value
                 console.log(this.bust);
                 console.log(this.player1Value);
-                j++;
-                d++;
+                }
             }
-        }
         console.log(this.player1[j].cardImg);
-    }
+          }
     dealerHit(){
         this.player2.push(this.theDeck[d]);
         console.log(this.player2);
@@ -114,6 +116,8 @@ class Game {
         }
         $('#dealer').append('<li><img src="assets/cards/' + this.player2[k].cardImg + '" /></li>');
         this.player2Value = this.player2Value + this.player2[this.player2.length - 1].cardValue;
+        k++;
+                d++;
         if (this.player2Value <= 21) {
             return this.player2Value
         } else {
@@ -125,15 +129,13 @@ class Game {
                 this.bust = true;
                 return this.player2Value
                 console.log(this.bust);
-                k++;
-                d++;
-            }
+                }
         }
     }
     checkBlackjack() {
         if (this.player1Value === 21 && this.player2Value !== 21) {
             alert('Winner Winnner Chicken Dinner!!!');
-            this.gameOver = true;
+            this.playerWin = true;
             return 'Blackjack!'
         } else {
             return '';
@@ -141,9 +143,11 @@ class Game {
     }
     checkWinner() {
         if (this.player1Value === this.player2Value) {
+          this.push = true;
             return 'push'
         } else {
             if (this.player1Value > this.player2Value) {
+              this.playerWin = true;
                 return 'player wins!'
             } else {
                 return 'dealer wins'
