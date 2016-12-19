@@ -4,10 +4,10 @@
 ![Blackjack](http://i.imgur.com/azGE9OF.png)
 
 ##Technologies Used
--HTML
--CSS
--Javascript
--jQuery
+- HTML
+- CSS
+- Javascript
+- jQuery
 ##Code Example
 This is my code for my blackjack logic
 ```javascript
@@ -28,11 +28,11 @@ by adding a player Class and The Deck and App Classes need to be cleaned
 up
 
 ##Complications/Future Improvements
--player Class
--improve styling
--add animations
--add sound
--improve layout/ usability
+- player Class
+- improve styling
+- add animations
+- add sound
+-  improve layout/ usability
 
 ###Contributing
 Ariana Dziedzic
