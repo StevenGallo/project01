@@ -15,7 +15,7 @@ let thisPlay = new Play();
 console.log(thisPlay);
     let theGame = thisPlay.newPlay();
     theGame.newGameDeck();
-function firstGame() {
+function deal() {
     theGame.firstDeal();
     $.each(theGame.playerHand(), function() {
         $('#player').append('<li><img src="assets/cards/' + this + '" /></li>');
@@ -25,10 +25,10 @@ function firstGame() {
     });
     $('#credits').html('Credits: ' + thisPlay.credits);
     let firstValue = theGame.handValue();
-    $('#dealer_total').html('Dealer:').append('<br />'+firstValue[1]);
     $('#player_total').html('Player:').append('<br />'+firstValue[0]);
+    $('#win').text(theGame.checkBlackjack());
 }
-$('button#Play').click(() => firstGame());
+$('button#Play').click(() => deal());
 function addBet(num){
   console.log(num);
   console.log(thisPlay.bet);
@@ -39,6 +39,23 @@ function addBet(num){
     $('#credits').html('Credits: ' + thisPlay.credits);
   }
 }
+function newHit(){
+$('#player_total').html('Player:').append('<br />'+theGame.hit());
+if (theGame.bust === true){
+  $('#win').text('Bust!');
+}
+}
+function stay(){
+   $('#dealer_total').html('Dealer:').append('<br />'+theGame.player2Value);
+  while(theGame.player2Value<=16){
+$('#dealer_total').html('Dealer:').append('<br />'+theGame.dealerHit());
+}
+if (theGame.bust === true){
+  $('#win').text('Dealer Busts!');
+}
+}
+$('button#Hit').click(() => newHit());
+$('button#Stay').click(() => stay());
 $('button#bet100').click(() => addBet(100));
 $('button#bet500').click(() => addBet(500));
 $('button#bet1000').click(() => addBet(1000));
