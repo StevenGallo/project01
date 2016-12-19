@@ -8,6 +8,7 @@
 - CSS
 - Javascript
 - jQuery
+
 ##Code Example
 This is my code for my blackjack logic
 ```javascript
