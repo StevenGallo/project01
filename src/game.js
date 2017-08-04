@@ -1,159 +1,158 @@
 console.log('game working');
-//player card array counter
+// player card array counter
 let j = 0;
-//dealer card array counter
+// dealer card array counter
 let k = 0;
-//deck counter
+// deck counter
 let d = 0;
 class Game {
-    constructor() {
-        this.player1 = [];
-        this.player2 = [];
-        this.player1Value = 0;
-        this.player2Value = 0;
-        this.player1Hand = [];
-        this.player2Hand = [];
-        this.theDeck = null;
-        this.player1Ace = 0;
-        this.player2Ace = 0;
-        this.push = false;
-        this.bust = false;
-        this.playerWin = false;
+  constructor() {
+    this.player1 = [];
+    this.player2 = [];
+    this.player1Value = 0;
+    this.player2Value = 0;
+    this.player1Hand = [];
+    this.player2Hand = [];
+    this.theDeck = null;
+    this.player1Ace = 0;
+    this.player2Ace = 0;
+    this.push = false;
+    this.bust = false;
+    this.playerWin = false;
+  }
+  newGameDeck() {
+    this.newDeck = new Deck();
+    this.newDeck.createDeck();
+    this.theDeck = this.newDeck.shuffleDeck();
+    return this.theDeck;
+  }
+  newGame() {
+    this.theDeck.newGameDeck();
+  }
+  firstDeal() {
+    j = 0;
+    k = 0;
+    d = 0;
+    for (d; d < 4; d++) {
+      console.log(d);
+      this.player1.push(this.theDeck[d]);
+      this.player1Hand.push(this.player1[j].cardImg);
+      if (this.player1[j].cardValue === 11) {
+        this.player1HasAce = true;
+        this.player1Ace++;
+      }
+      j++;
+      d++;
+      this.player2.push(this.theDeck[d]);
+      this.player2Hand.push(this.player2[k].cardImg);
+      if (this.player1[k].cardValue === 11) {
+        this.player2HasAce = true;
+        this.player2Ace++;
+      }
+      k++;
     }
-    newGameDeck() {
-        this.newDeck = new Deck();
-        this.newDeck.createDeck();
-        this.theDeck = this.newDeck.shuffleDeck();
-        return this.theDeck;
+    return [this.player1, this.player2];
+  }
+  playerHand() {
+    return this.player1Hand;
+  }
+  dealerHand() {
+    return this.player2Hand;
+  }
+  handValue() {
+    for (let i = 0; i < this.player1.length; i++) {
+      this.player1Value += this.player1[i].cardValue;
+      if (this.player1Value > 21) {
+        this.player1Value = this.player1Value - 10;
+        this.player1Ace--;
+      }
     }
-    newGame() {
-        this.theDeck.newGameDeck();
+    for (let j = 0; j < this.player2.length; j++) {
+      this.player2Value += this.player2[j].cardValue;
+      if (this.player2Value > 21) {
+        this.player2Value = this.player2Value - 10;
+        this.player2Ace--;
+      }
     }
-    firstDeal() {
-           j = 0;
-           k = 0;
-           d = 0;
-        for (d; d < 4; d++) {
-          console.log(d);
-            this.player1.push(this.theDeck[d]);
-            this.player1Hand.push(this.player1[j].cardImg);
-            if (this.player1[j].cardValue === 11) {
-                this.player1HasAce = true;
-                this.player1Ace++;
-            }
-            j++;
-            d++;
-            this.player2.push(this.theDeck[d]);
-            this.player2Hand.push(this.player2[k].cardImg);
-            if (this.player1[k].cardValue === 11) {
-                this.player2HasAce = true;
-                this.player2Ace++;
-            }
-            k++;
-        }
-        return [this.player1, this.player2];
+    return [this.player1Value, this.player2Value];
+  }
+  hit() {
+    this.player1.push(this.theDeck[d]);
+    console.log(this.player1);
+    this.player1Hand.push(this.player1[j].cardImg);
+    console.log(this.player1[j].cardImg);
+    if (this.player1[j].cardValue === 11) {
+      this.player1Ace++;
     }
-    playerHand() {
-        return this.player1Hand
+    $('#player').append(
+      `<li><img src="assets/cards/${this.player1[j].cardImg}" /></li>`,
+    );
+    this.player1Value =
+      this.player1Value + this.player1[this.player1.length - 1].cardValue;
+    j++;
+    d++;
+    console.log(this.player1Value);
+    if (this.player1Value <= 21) {
+      return this.player1Value;
+    } else if (this.player1Ace > 0) {
+      this.player1Value = this.player1Value - 10;
+      this.player1Ace--;
+      return this.player1Value;
+    } else {
+      this.bust = true;
+      return this.player1Value;
+      console.log(this.bust);
+      console.log(this.player1Value);
     }
-    dealerHand() {
-        return this.player2Hand
+    console.log(this.player1[j].cardImg);
+  }
+  dealerHit() {
+    this.player2.push(this.theDeck[d]);
+    console.log(this.player2);
+    this.player2Hand.push(this.player2[k].cardImg);
+    console.log(this.player2[k].cardImg);
+    if (this.player2[k].cardValue === 11) {
+      this.player2Ace++;
     }
-    handValue() {
-        for (let i = 0; i < this.player1.length; i++) {
-            this.player1Value += this.player1[i].cardValue;
-            if (this.player1Value > 21) {
-                this.player1Value = this.player1Value - 10;
-                this.player1Ace--;
-            }
-        }
-        for (let j = 0; j < this.player2.length; j++) {
-            this.player2Value += this.player2[j].cardValue;
-            if (this.player2Value > 21) {
-                this.player2Value = this.player2Value - 10;
-                this.player2Ace--;
-            }
-        }
-        return [this.player1Value, this.player2Value];
-
+    $('#dealer').append(
+      `<li><img src="assets/cards/${this.player2[k].cardImg}" /></li>`,
+    );
+    this.player2Value =
+      this.player2Value + this.player2[this.player2.length - 1].cardValue;
+    k++;
+    d++;
+    if (this.player2Value <= 21) {
+      return this.player2Value;
+    } else if (this.player2Ace > 0) {
+      this.player2Value = this.player2Value - 10;
+      this.player2Ace--;
+      return this.player2Value;
+    } else {
+      this.bust = true;
+      return this.player2Value;
+      console.log(this.bust);
     }
-    hit() {
-        this.player1.push(this.theDeck[d]);
-        console.log(this.player1);
-        this.player1Hand.push(this.player1[j].cardImg);
-        console.log(this.player1[j].cardImg);
-        if (this.player1[j].cardValue === 11) {
-            this.player1Ace++;
-        }
-        $('#player').append('<li><img src="assets/cards/' + this.player1[j].cardImg + '" /></li>');
-        this.player1Value = this.player1Value + this.player1[this.player1.length - 1].cardValue;
-        j++;
-                d++;
-        console.log(this.player1Value);
-        if (this.player1Value <= 21) {
-            return this.player1Value
-        } else {
-            if (this.player1Ace > 0) {
-                this.player1Value = this.player1Value - 10;
-                this.player1Ace--;
-                return this.player1Value
-            } else {
-                this.bust = true;
-                return this.player1Value
-                console.log(this.bust);
-                console.log(this.player1Value);
-                }
-            }
-        console.log(this.player1[j].cardImg);
-          }
-    dealerHit(){
-        this.player2.push(this.theDeck[d]);
-        console.log(this.player2);
-        this.player2Hand.push(this.player2[k].cardImg);
-        console.log(this.player2[k].cardImg);
-        if (this.player2[k].cardValue === 11) {
-            this.player2Ace++;
-        }
-        $('#dealer').append('<li><img src="assets/cards/' + this.player2[k].cardImg + '" /></li>');
-        this.player2Value = this.player2Value + this.player2[this.player2.length - 1].cardValue;
-        k++;
-                d++;
-        if (this.player2Value <= 21) {
-            return this.player2Value
-        } else {
-            if (this.player2Ace > 0) {
-                this.player2Value = this.player2Value - 10;
-                this.player2Ace--;
-                return this.player2Value
-            } else {
-                this.bust = true;
-                return this.player2Value
-                console.log(this.bust);
-                }
-        }
+  }
+  checkBlackjack() {
+    if (this.player1Value === 21 && this.player2Value !== 21) {
+      alert('Winner Winner Chicken Dinner!!!');
+      this.playerWin = true;
+      return 'Blackjack!';
+    } else {
+      return '';
     }
-    checkBlackjack() {
-        if (this.player1Value === 21 && this.player2Value !== 21) {
-            alert('Winner Winnner Chicken Dinner!!!');
-            this.playerWin = true;
-            return 'Blackjack!'
-        } else {
-            return '';
-        }
+  }
+  checkWinner() {
+    if (this.player1Value === this.player2Value) {
+      this.push = true;
+      return 'push';
+    } else if (this.player1Value > this.player2Value) {
+      this.playerWin = true;
+      return 'player wins!';
+    } else {
+      return 'dealer wins';
     }
-    checkWinner() {
-        if (this.player1Value === this.player2Value) {
-          this.push = true;
-            return 'push'
-        } else {
-            if (this.player1Value > this.player2Value) {
-              this.playerWin = true;
-                return 'player wins!'
-            } else {
-                return 'dealer wins'
-            }
-        }
-    }
+  }
 }
 
 // handValue() {
